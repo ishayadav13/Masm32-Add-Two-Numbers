@@ -1,0 +1,44 @@
+.data
+c dw ?
+a dw 08h
+b dw 06h  
+
+
+
+.code
+
+    mov ax, @data
+    mov dx, ax
+
+    mov ax, a
+    mov bx, b
+mulbx
+
+    mov c, ax
+
+8 bit addition
+
+data segment
+    n1 db 04h
+    n2 db 01h
+    res db ?
+    data ends
+
+code segment
+assume cs:code,ds:data
+start:
+    mov ax,data
+    mov ds,ax
+    mov al,n1
+    mov bl,n2
+
+    add al,bl
+
+    mov res,al
+
+
+    mov ah,4ch
+    int 21h
+code ends
+end start
+
